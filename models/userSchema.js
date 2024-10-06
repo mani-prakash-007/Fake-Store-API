@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
   {
@@ -21,10 +21,15 @@ const userSchema = mongoose.Schema(
       required: true,
     },
     phone_number: {
-      type: Number,
+      type: String,
       required: true,
+      unique: true,
       minLength: 10,
       maxLength: 10,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
     },
   },
   {
@@ -32,4 +37,4 @@ const userSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema);

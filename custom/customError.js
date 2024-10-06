@@ -1,48 +1,43 @@
 class ApplicationError extends Error {
-  constructor(message, status) {
-    super();
+  constructor(message, statusCode) {
+    super(message || "Something went wrong");
     Error.captureStackTrace(this, this.constructor);
-    this.statusCode = status || 500;
+    this.statusCode = statusCode || 500;
     this.name = this.constructor.name;
-    this.message = message || "Something went Wrong";
   }
 }
 
-class NotFoundError extends ApplicationError {
+export class NotFoundError extends ApplicationError {
   constructor(message) {
     super(message || "Resource not found", 404);
   }
 }
 
-class OwnerShipError extends ApplicationError {
+export class OwnerShipError extends ApplicationError {
   constructor(message) {
-    super(message || "Ownership not belongs to currentUser", 403);
+    super(message || "Ownership does not belong to the current user", 403);
   }
 }
 
-class IncorrectPasswordError extends ApplicationError {
+export class IncorrectPasswordError extends ApplicationError {
   constructor(message) {
-    super(message || "Incorrect Password", 401);
+    super(message || "Incorrect password", 401);
   }
 }
 
-class EmailAlreadyExistsError extends ApplicationError {
+export class EmailAlreadyExistsError extends ApplicationError {
   constructor(message) {
-    super(message || "Email Already Exist", 409);
+    super(message || "Email already exists", 409);
+  }
+}
+export class PhoneNumberExistError extends ApplicationError {
+  constructor(message) {
+    super(message || "Phone Number already exists", 409);
   }
 }
 
-class UnauthorizedError extends ApplicationError {
+export class UnauthorizedError extends ApplicationError {
   constructor(message) {
     super(message || "Unauthorized access", 401);
   }
 }
-
-module.exports = {
-  ApplicationError,
-  NotFoundError,
-  OwnerShipError,
-  IncorrectPasswordError,
-  EmailAlreadyExistsError,
-  UnauthorizedError,
-};
