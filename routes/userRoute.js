@@ -1,7 +1,12 @@
 import express from "express";
-import { registerUser } from "../controllers/userController.js";
-import { registerSchema } from "../validation/userValidation.js";
+import {
+  getCurrentUser,
+  loginUser,
+  registerUser,
+} from "../controllers/userController.js";
+import { loginSchema, registerSchema } from "../validation/userValidation.js";
 import { validateFields } from "../middleware/validateFields.js";
+import { Authorization } from "../middleware/authMiddleware.js";
 const userRouter = express.Router();
 
 //Routes
@@ -10,9 +15,9 @@ const userRouter = express.Router();
 userRouter.post("/register", validateFields(registerSchema), registerUser);
 
 //User SignIn Route
-userRouter.post("/login");
+userRouter.post("/login", validateFields(loginSchema), loginUser);
 
 //Current user Route
-userRouter.post("/current");
+userRouter.get("/current", Authorization, getCurrentUser);
 
 export default userRouter;

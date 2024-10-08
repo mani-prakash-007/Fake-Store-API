@@ -1,8 +1,9 @@
 //Import
 import express from "express";
 import mongoose from "mongoose";
-import userRouter from "./routes/userRoute.js";
 import dotenv from "dotenv";
+import userRouter from "./routes/userRoute.js";
+import productRoute from "./routes/productRoute.js";
 import { globalErrorHandler } from "./middleware/errorHandler.js";
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ conn.once("open", () => {
 //Routes
 //Sub route Imports
 app.use("/fake-store/user", userRouter);
+app.use("/fake-store/product", productRoute);
 
 //Global Error Handler
 app.use(globalErrorHandler);
