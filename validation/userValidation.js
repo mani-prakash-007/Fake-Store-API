@@ -1,6 +1,6 @@
 // Imports
 import { joiPasswordExtendCore } from "joi-password";
-import Joi from "joi"; // Ensure you have Joi imported as well
+import Joi from "joi";
 const JoiPassword = Joi.extend(joiPasswordExtendCore);
 
 // Schemas for User

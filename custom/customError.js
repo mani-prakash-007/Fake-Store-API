@@ -13,12 +13,6 @@ export class NotFoundError extends ApplicationError {
   }
 }
 
-export class OwnerShipError extends ApplicationError {
-  constructor(message) {
-    super(message || "Ownership does not belong to the current user", 403);
-  }
-}
-
 export class IncorrectPasswordError extends ApplicationError {
   constructor(message) {
     super(message || "Incorrect password", 401);
