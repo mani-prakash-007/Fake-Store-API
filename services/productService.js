@@ -1,7 +1,6 @@
 import { NotFoundError, UnauthorizedError } from "../custom/customError.js";
 import Product from "../models/productSchema.js";
 import User from "../models/userSchema.js";
-import { catchError } from "../utils/catchAsyncError.js";
 
 //Create New Product - Service
 export const createNewProduct = async (
@@ -11,7 +10,9 @@ export const createNewProduct = async (
   price,
   category,
   description,
-  imageUrl
+  imageUrl,
+  reviews,
+  ratings
 ) => {
   const user = await User.findById(userId);
   if (user.isAdmin === false) {
@@ -24,6 +25,8 @@ export const createNewProduct = async (
     product_category: category,
     product_description: description,
     product_image_url: imageUrl,
+    product_rating: ratings,
+    product_review: reviews,
   });
   return { statusCode: 200, status: "Product Added", details: product };
 };

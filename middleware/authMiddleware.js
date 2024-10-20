@@ -20,9 +20,9 @@ export const Authorization = async (req, res, next) => {
 
     // Step 3: Verify the token
     const decoded = jwt.verify(token, process.env.LOGIN_SECRET_KEY);
-
     // Step 4: Fetch user details from database
     const userDetails = await userSchema.findById(decoded.id);
+    console.log("User Details : ", userDetails);
     if (!userDetails) {
       throw new UnauthorizedError("JsonWebTokenError: invalid signature");
     }
@@ -33,6 +33,7 @@ export const Authorization = async (req, res, next) => {
       first_name: userDetails.first_name,
       last_name: userDetails.last_name,
       email: userDetails.email,
+      isAdmin: userDetails.isAdmin,
     };
 
     console.log("Authorization successful."); // Debug Log
@@ -46,5 +47,27 @@ export const Authorization = async (req, res, next) => {
       );
     }
     next(error);
+  }
+};
+
+export const verifyAdmin = (req, res, next) => {
+  const isAdmin = req.user.isAdmin;
+  if (isAdmin) {
+    next();
+  } else {
+    return next(
+      new UnauthorizedError("Access denied. Only admins are allowed.")
+    );
+  }
+};
+
+export const verifyUser = (req, res, next) => {
+  const isUser = req.user.isAdmin;
+  if (isUser) {
+    next();
+  } else {
+    return next(
+      new UnauthorizedError("Access denied. Only users are allowed.")
+    );
   }
 };

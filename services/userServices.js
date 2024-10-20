@@ -45,7 +45,7 @@ export const checkCredentials = async (email, password) => {
       statusCode: 200,
       status: "Login Success",
       loginToken: `${jwt.sign({ id: user._id }, process.env.LOGIN_SECRET_KEY, {
-        expiresIn: "5h",
+        expiresIn: "10m",
       })}`,
     };
   } else {

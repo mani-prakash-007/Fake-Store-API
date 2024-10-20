@@ -9,7 +9,8 @@ import { catchError } from "../utils/catchAsyncError.js";
 
 //Add Product - Controller
 export const addProduct = catchError(async (req, res) => {
-  const { id, name, price, category, description, imageUrl } = req.body;
+  const { id, name, price, category, description, imageUrl, reviews, ratings } =
+    req.body;
   const userId = req.user.id;
   const newProduct = await createNewProduct(
     userId,
@@ -18,7 +19,9 @@ export const addProduct = catchError(async (req, res) => {
     price,
     category,
     description,
-    imageUrl
+    imageUrl,
+    reviews,
+    ratings
   );
   res.status(newProduct.statusCode).json({
     Status: newProduct.status,

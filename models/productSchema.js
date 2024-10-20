@@ -26,9 +26,18 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  product_ratings: {
+    type: Number,
+    required: true,
+  },
+  product_reviews: {
+    type: Number,
+    required: true,
+  },
 });
 
 export default mongoose.model("Product", productSchema);
+
 // DB Schema Outline
 
 // Product Id : Integer
@@ -42,3 +51,7 @@ export default mongoose.model("Product", productSchema);
 // Product Description : String
 
 // Product Image Url : String
+
+// Product Rating : Number
+
+// Product Review : Number

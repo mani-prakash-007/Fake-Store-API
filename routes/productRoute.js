@@ -14,7 +14,7 @@ import {
   addProductSchema,
   productIdSchema,
 } from "../validation/productValidation.js";
-import { Authorization } from "../middleware/authMiddleware.js";
+import { Authorization, verifyAdmin } from "../middleware/authMiddleware.js";
 const productRoute = express.Router();
 
 //Routes
@@ -24,6 +24,7 @@ productRoute.post(
   "/",
   validateFields(addProductSchema),
   Authorization,
+  verifyAdmin,
   addProduct
 );
 
@@ -32,6 +33,7 @@ productRoute.delete(
   "/:id",
   Authorization,
   validateParams(productIdSchema),
+  verifyAdmin,
   removeProduct
 );
 
@@ -40,6 +42,7 @@ productRoute.put(
   "/:id",
   Authorization,
   validateParams(productIdSchema),
+  verifyAdmin,
   updateProductDetails
 );
 
