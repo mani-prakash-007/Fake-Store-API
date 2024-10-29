@@ -22,7 +22,6 @@ export const Authorization = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.LOGIN_SECRET_KEY);
     // Step 4: Fetch user details from database
     const userDetails = await userSchema.findById(decoded.id);
-    console.log("User Details : ", userDetails);
     if (!userDetails) {
       throw new UnauthorizedError("JsonWebTokenError: invalid signature");
     }

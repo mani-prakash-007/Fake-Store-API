@@ -12,6 +12,11 @@ export class NotFoundError extends ApplicationError {
     super(message || "Resource not found", 404);
   }
 }
+export class QuantityLimitExceededError extends ApplicationError {
+  constructor(message) {
+    super(message || "Quantity is more. Reduce the Quantity", 400);
+  }
+}
 
 export class IncorrectPasswordError extends ApplicationError {
   constructor(message) {

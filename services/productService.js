@@ -25,8 +25,8 @@ export const createNewProduct = async (
     product_category: category,
     product_description: description,
     product_image_url: imageUrl,
-    product_rating: ratings,
-    product_review: reviews,
+    product_ratings: ratings,
+    product_reviews: reviews,
   });
   return { statusCode: 200, status: "Product Added", details: product };
 };

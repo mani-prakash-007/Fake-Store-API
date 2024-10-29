@@ -13,7 +13,6 @@ export const addProductSchema = Joi.object({
   ratings: Joi.number().required(),
   reviews: Joi.number().required(),
 });
-
 //Product Id - Validation
 export const productIdSchema = Joi.object({
   id: Joi.string().pattern(new RegExp("^[0-9a-fA-F]{24}$")).messages({
