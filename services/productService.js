@@ -96,3 +96,13 @@ export const updateProduct = async (userId, id, updateDetails) => {
     details: updatedProduct,
   };
 };
+
+//Get All category
+export const findAllCategory = async () => {
+  const allCategory = await Product.distinct("product_category");
+  return {
+    statusCode: 200,
+    status: "Fetch Success",
+    details: allCategory,
+  };
+};

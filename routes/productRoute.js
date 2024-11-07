@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addProduct,
+  getAllCategory,
   getAllProducts,
   getProductById,
   removeProduct,
@@ -48,7 +49,8 @@ productRoute.put(
 
 //Get all products
 productRoute.get("/", getAllProducts);
-
+//Get All category
+productRoute.get("/categories", getAllCategory);
 //Get particular product by id
 productRoute.get("/:id", validateParams(productIdSchema), getProductById);
 

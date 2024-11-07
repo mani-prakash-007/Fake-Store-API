@@ -1,7 +1,6 @@
 import {
   NotFoundError,
   QuantityLimitExceededError,
-  UnauthorizedError,
 } from "../custom/customError.js";
 import Product from "../models/productSchema.js";
 import Cart from "../models/cartSchema.js";

@@ -1,6 +1,7 @@
 import {
   createNewProduct,
   deleteProduct,
+  findAllCategory,
   findAllProducts,
   findProductById,
   updateProduct,
@@ -67,3 +68,10 @@ export const updateProductDetails = catchError(async (req, res) => {
     Updated_Details: updatedProduct.details,
   });
 });
+
+//Get all Category
+
+export const getAllCategory = async (req, res) => {
+  const allCategory = await findAllCategory();
+  res.status(allCategory.statusCode).json({ All_Category: allCategory });
+};
