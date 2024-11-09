@@ -7,6 +7,7 @@ import userRouter from "./routes/userRoute.js";
 import productRoute from "./routes/productRoute.js";
 import { globalErrorHandler } from "./middleware/errorHandler.js";
 import cartRoute from "./routes/cartRoute.js";
+import { orderRoute } from "./routes/orderRoute.js";
 const app = express();
 dotenv.config();
 
@@ -34,6 +35,7 @@ conn.once("open", () => {
 app.use("/fake-store/user", userRouter);
 app.use("/fake-store/product", productRoute);
 app.use("/fake-store/cart", cartRoute);
+app.use("/fake-store/order", orderRoute);
 
 //Global Error Handler
 app.use(globalErrorHandler);
