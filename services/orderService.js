@@ -27,13 +27,6 @@ export const placeOrderService = async (userId, productId, quantity) => {
 
 export const getAllOrderService = async (userId) => {
   const orders = await Order.find({ user: userId });
-  if (!orders) {
-    return {
-      statusCode: 200,
-      status: "Fetch Success",
-      details: "No orders found.",
-    };
-  }
   return {
     statusCode: 200,
     status: "Fetch Success",
