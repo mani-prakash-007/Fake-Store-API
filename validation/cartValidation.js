@@ -5,7 +5,7 @@ export const addProductToCart = Joi.object({
     "string.pattern.base":
       "Invalid ID format. Please provide a valid 24-character hexadecimal ID.",
   }),
-  quantity: Joi.number().integer().min(1).max(5).required(),
+  quantity: Joi.number().integer().min(-5).max(5).required(),
 });
 
 export const removeProductFromCart = Joi.object({

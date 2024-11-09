@@ -8,7 +8,7 @@ import { catchError } from "../utils/catchAsyncError.js";
 export const addProduct = catchError(async (req, res) => {
   const { productId, quantity } = req.body;
   const userId = req.user.id;
-  const product = await addProductToCart(userId, productId, quantity);
+  const product = await addProductToCart(userId, productId, parseInt(quantity));
   res.status(200).json({ message: "Product Added to cart", Details: product });
 });
 
