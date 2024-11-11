@@ -26,7 +26,7 @@ export const placeOrderService = async (userId, productId, quantity) => {
 };
 
 export const getAllOrderService = async (userId) => {
-  const orders = await Order.find({ user: userId });
+  const orders = await Order.find({ user: userId }).sort({ createdAt: -1 });
   return {
     statusCode: 200,
     status: "Fetch Success",

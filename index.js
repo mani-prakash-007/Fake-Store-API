@@ -11,7 +11,7 @@ import { orderRoute } from "./routes/orderRoute.js";
 const app = express();
 dotenv.config();
 
-// Allow requests from the frontend (http://localhost:5173)
+// Allow requests from all 
 app.use(
   cors({
     origin: "*",
